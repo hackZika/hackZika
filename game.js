@@ -14,25 +14,15 @@ let lives = 5;
 let level;
 
 // barrier randomizer
-function randomItems() {
-  let items = Math.floor(Math.random() * 500) - 1;
-}
+// function randomItems() {
+//   let items = Math.floor(Math.random() * 500) - 1;
+// }
 
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
   createItem(375, 400, 'coin');
   createItem(575, 500, 'coin');
-  createItem(225, 500, 'coin');
-  createItem(100, 250, 'coin');
-  createItem(575, 150, 'coin');
-  createItem(525, 300, 'coin');
-  createItem(650, 250, 'coin');
-  createItem(225, 200, 'coin');
-  createItem(375, 100, 'poison');
-  createItem(370,500,'poison');
-  createItem(100, 375, 'poison');
-  createItem(125, 50, 'star');
 }
 
 // add platforms
@@ -48,31 +38,31 @@ function createItem(left, top, image) {
 }
 
 // when the player collects an item on the screen
-_itemsPlus(player, itemsPlus) => {
-  itemPlus.kill();
+function _itemsPlus(player, itemsPlus) {
+  itemsPlus.kill();
   switch (itemsPlus) {
     case 'honey': currentScore += 10;
-    [break;]
+    break;
     case 'water': currentScore += 20;
-    [break;]
+    break;
   }
 }
 
-_itemsMinus(player, itemsMinus) => {
+function _itemsMinus(player, itemsMinus) {
   itemsMinus.kill();
   switch (itemsMinus) {
     case 'poison': lives -= 1;
-    [break;]
+    break;
     case 'mist': lives -= 2;
-    [break;]
+    break;
   }
 }
 
 // when the player collects the badge
-_badge() => {
-  badge.kill();
-  won = true;
-}
+// _badge() => {
+//   badge.kill();
+//   won = true;
+// }
 
 // setup game when the web page loads
 window.onload = function () {
@@ -82,6 +72,7 @@ window.onload = function () {
 // before the game begins
 function preload() {
   game.stage.backgroundColor = '#5db1ad';
+  game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
 }
 
 //load images
@@ -96,4 +87,30 @@ function create() {
   game.physics.arcade.enable(player);
   player.body.collideWorldBounds = true;
   player.body.gravity.y = 800;
+
+  addItems();
+
+  cursors = game.input.keyboard.createCursorsKeys();
+  jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  text = game.add.text(16, 16, "SCORE: " + currentScore, { font: "bold 24px Arial", fill: "white"});
+  winningMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "white"});
+  winningMessage.anchor.setTo(0.5, 1);
 }
+
+//while the game is running
+
+function update() {
+  // text.text = "SCORE: " + currentScore;
+  // game.physics.arcade.collide(player, platforms);
+  // game.physics.arcade.overlap(player, items, _itemsPlus);
+  // game.physics.arcade.overlap(player, items, _itemsMinus);
+  // game.physics.arcade.overlap(player, badges, _badge);
+  player.body.velocity.x = 0;
+}
+
+function render() {
+
+}
+
+//left cursor
+// if (cursors.left.isDown)
