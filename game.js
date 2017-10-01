@@ -28,8 +28,8 @@ function addItems() {
   createItem(575, 300, 'coin');
   createItem(575, 200, 'heart');
   createItem(300, 120, 'fish');
-  createItem(100, 465, 'bush');
-  createItem(425, 465, 'bush');
+  createItem(100, 510, 'bush');
+  createItem(425, 510, 'bush');
 }
 
 // add platforms
@@ -96,7 +96,7 @@ function badgeHandler(player, badge) {
 
 // setup game when the web page loads
 window.onload = function() {
-  game = new Phaser.Game(900, 500, Phaser.AUTO, 'backgroundImage', {
+  game = new Phaser.Game(900, 550, Phaser.AUTO, 'backgroundImage', {
     preload: preload,
     create: create,
     update: update,
@@ -108,7 +108,7 @@ window.onload = function() {
     game.load.image('night', 'assets/middleNight.png');
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
-    game.load.spritesheet('player', 'assets/mosquito.png', 35, 35);
+    game.load.spritesheet('player', 'assets/mosquito.png', 40, 40);
     game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
