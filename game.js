@@ -6,7 +6,7 @@ let badges;
 let cursors;
 let jumpButton;
 let text;
-let winningMessage;
+let message;
 let won = false;
 let currentScore = 0;
 let lives = 5;
@@ -103,12 +103,12 @@ window.onload = function() {
     //load images
 
     //load spritesheets
-    game.load.spritesheet('player', 'assets/digger.png', 30, 30);
     game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
     game.load.spritesheet('fish', 'assets/loveFish.png', 24, 37.5);
+    game.load.spritesheet('player', 'assets/mosquito.png', 35, 35);
   }
   //initial game set up
   function create() {
@@ -124,9 +124,15 @@ window.onload = function() {
 
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    text = game.add.text(16, 16, 'SCORE: ' + currentScore, { font: 'bold 24px Arial', fill: 'white' });
-    winningMessage = game.add.text(game.world.centerX, 275, '', { font: 'bold 48px Arial', fill: 'white' });
-    winningMessage.anchor.setTo(0.5, 1);
+    text = game.add.text(16, 16, 'SCORE: ' + currentScore, {
+      font: 'bold 24px Arial',
+      fill: 'white'
+    });
+    message = game.add.text(game.world.centerX, 275, '', {
+      font: 'bold 48px Arial',
+      fill: 'white'
+    });
+    message.anchor.setTo(0.5, 1);
   }
 
   //while the game is running
@@ -168,12 +174,15 @@ window.onload = function() {
       player.animations.stop();
     }
 
-    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down)) {
+    if (
+      jumpButton.isDown &&
+      (player.body.onFloor() || player.body.touching.down)
+    ) {
       player.body.velocity.y = -400;
     }
 
     if (won) {
-      winningMessage.text = 'Prepare for the next level!';
+      message.text = 'Prepare for the next level!';
     }
   }
 
