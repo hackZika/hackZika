@@ -21,7 +21,12 @@ let level;
 function addItems() {
   items = game.add.physicsGroup();
   createItem(375, 400, 'coin');
+  createItem(100, 100, 'coin');
+  createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
+  createItem(125, 120, 'star');
+  createItem(425, 300, 'heart');
+
 }
 
 // add platforms
@@ -36,7 +41,6 @@ function createItem(left, top, image) {
   item.animations.play('spin', 10, true);
 }
 
-<<<<<<< HEAD
 // create badge to go to next level
 
 function createBadge() {
@@ -65,35 +69,11 @@ function itemHandler(player, item) {
     break;
     case 'heart': lives += 1;
     break;
-=======
-// when the player collects an item on the screen
-function _itemsPlus(player, itemsPlus) {
-  itemsPlus.kill();
-  switch (itemsPlus) {
-    case 'honey':
-      currentScore += 10;
-      break;
-    case 'water':
-      currentScore += 20;
-      break;
-  }
-}
-
-function _itemsMinus(player, itemsMinus) {
-  itemsMinus.kill();
-  switch (itemsMinus) {
-    case 'poison':
-      lives -= 1;
-      break;
-    case 'mist':
-      lives -= 2;
-      break;
->>>>>>> e728274c27592da8a6cb31901dd199ee6da79631
+    case 'star': currentScore += 100;
   }
 }
 
 // when the player collects the badge
-<<<<<<< HEAD
 function badgeHandler(player, badge) {
   badge.kill();
   won = true;
@@ -102,22 +82,6 @@ function badgeHandler(player, badge) {
 // setup game when the web page loads
 window.onload = function () {
   game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
-=======
-// _badge() => {
-//   badge.kill();
-//   won = true;
-// }
-
-// setup game when the web page loads
-window.onload = function() {
-  game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
-    preload: preload,
-    create: create,
-    update: update,
-    render: render
-  });
-};
->>>>>>> e728274c27592da8a6cb31901dd199ee6da79631
 
 // before the game begins
 function preload() {
@@ -127,8 +91,11 @@ function preload() {
 //load images
 
 //load spritesheets
+game.load.spritesheet('player', 'assets/digger.png', 30, 30);
 game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
 game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
+game.load.spritesheet('star', 'assets/star.png', 32, 32);
+game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
 
 }
 //initial game set up
@@ -138,15 +105,15 @@ function create() {
   player.anchor.setTo(0.5, 1);
   game.physics.arcade.enable(player);
   player.body.collideWorldBounds = true;
-  player.body.gravity.y = 100;
+  player.body.gravity.y = 200;
 
   addItems();
   // addPlatforms();
 
   cursors = game.input.keyboard.createCursorKeys();
   jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  text = game.add.text(16, 16, 'SCORE: ' + currentScore, { font: 'bold 24px Arial', fill: 'white' });
-  winningMessage = game.add.text(game.world.centerX, 275, '', { font: 'bold 48px Arial', fill: 'white' });
+  text = game.add.text(16, 16, "SCORE: " + currentScore, { font: "bold 24px Arial", fill: "white"});
+  winningMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "white"});
   winningMessage.anchor.setTo(0.5, 1);
 }
 
@@ -192,13 +159,9 @@ function update() {
 
 }
 
-<<<<<<< HEAD
 
 function render() {
 
   }
-=======
-function render() {}
->>>>>>> e728274c27592da8a6cb31901dd199ee6da79631
 
 };
