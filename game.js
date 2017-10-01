@@ -85,6 +85,7 @@ function preload() {
 //load images
 
 //load spritesheets
+game.load.spritesheet('player', 'assets/digger.png', 30, 30);
 game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
 game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
 
@@ -96,7 +97,7 @@ function create() {
   player.anchor.setTo(0.5, 1);
   game.physics.arcade.enable(player);
   player.body.collideWorldBounds = true;
-  player.body.gravity.y = 100;
+  player.body.gravity.y = 200;
 
   addItems();
   // addPlatforms();
