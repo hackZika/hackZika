@@ -6,9 +6,8 @@ let badges;
 let cursors;
 let jumpButton;
 let text;
-let message;
+let winningMessage;
 let won = false;
-let lost = false;
 let currentScore = 0;
 let lives = 5;
 let level;
@@ -25,7 +24,7 @@ function addItems() {
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
-  createItem(125, 120, 'fish');
+  createItem(125, 120, 'star');
   createItem(425, 300, 'heart');
 }
 
@@ -65,7 +64,7 @@ function itemHandler(player, item) {
       lives -= 3;
       break;
     case 'fish':
-      lives -= lives;
+      lives = lives - lives;
       break;
     case 'coin':
       currentScore += 25;
@@ -108,7 +107,6 @@ window.onload = function() {
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
-    game.load.spritesheet('fish', 'assets/LoveFish.png', 16, 14);
   }
   //initial game set up
   function create() {
@@ -117,22 +115,16 @@ window.onload = function() {
     player.anchor.setTo(0.5, 1);
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
-    player.body.gravity.y = 500;
+    player.body.gravity.y = 700;
 
     addItems();
     // addPlatforms();
 
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    text = game.add.text(16, 16, 'SCORE: ' + currentScore, {
-      font: 'bold 24px Arial',
-      fill: 'white'
-    });
-    message = game.add.text(game.world.centerX, 275, '', {
-      font: 'bold 48px Arial',
-      fill: 'white'
-    });
-    message.anchor.setTo(0.5, 1);
+    text = game.add.text(16, 16, 'SCORE: ' + currentScore, { font: 'bold 24px Arial', fill: 'white' });
+    winningMessage = game.add.text(game.world.centerX, 275, '', { font: 'bold 48px Arial', fill: 'white' });
+    winningMessage.anchor.setTo(0.5, 1);
   }
 
   //while the game is running
@@ -148,40 +140,36 @@ window.onload = function() {
       player.animations.play('walk', 10, true);
       player.body.velocity.x = -350;
       player.scale.x = -1;
-    } else if (cursors.right.isDown) {
+    }
+
+    if (cursors.right.isDown) {
       player.animations.play('walk', 10, true);
       player.body.velocity.x = 350;
       player.scale.x = 1;
-    } else if (cursors.up.isDown) {
+    }
+
+    if (cursors.up.isDown) {
       player.animations.play('walk', 10, true);
       player.body.velocity.y = -350;
       player.scale.y = 1;
-    } else if (cursors.down.isDown) {
+    }
+
+    if (cursors.down.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.y = 200;
+      player.body.velocity.y = 400;
       player.scale.y = 1;
-    } else if (cursors.up.isDown & cursors.left.isDown) {
-      player.animations.play('walk', 10, true);
-      player.body.velocity.x = -350;
-      player.body.velocity.y = -350;
-      player.scale.x = -1;
-    } else {
+    }
+
+    if (!cursors.left.isDown && !cursors.right.isDown && !cursors.up.isDown) {
       player.animations.stop();
     }
 
-    if (
-      jumpButton.isDown &&
-      (player.body.onFloor() || player.body.touching.down)
-    ) {
+    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -400;
     }
 
     if (won) {
-      message.text = 'Prepare for the next level!';
-    }
-    if (lives === 0) {
-      lost = true;
-      message.text = 'You lost!';
+      winningMessage.text = 'Prepare for the next level!';
     }
   }
 
