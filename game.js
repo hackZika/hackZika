@@ -21,6 +21,8 @@ let level;
 function addItems() {
   items = game.add.physicsGroup();
   createItem(375, 400, 'coin');
+  createItem(100, 100, 'coin');
+  createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
 }
 
@@ -64,6 +66,7 @@ function itemHandler(player, item) {
     break;
     case 'heart': lives += 1;
     break;
+    case 'star': currentScore += 100;
   }
 }
 
@@ -88,6 +91,7 @@ function preload() {
 game.load.spritesheet('player', 'assets/digger.png', 30, 30);
 game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
 game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
+game.load.spritesheet('star', 'assets/star.png', 32, 32);
 
 }
 //initial game set up
