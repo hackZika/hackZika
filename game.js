@@ -108,6 +108,7 @@ window.onload = function() {
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
+    game.load.spritesheet('fish', 'assets/LoveFish.png', 16, 14);
   }
   //initial game set up
   function create() {
@@ -127,11 +128,11 @@ window.onload = function() {
       font: 'bold 24px Arial',
       fill: 'white'
     });
-    winningMessage = game.add.text(game.world.centerX, 275, '', {
+    message = game.add.text(game.world.centerX, 275, '', {
       font: 'bold 48px Arial',
       fill: 'white'
     });
-    winningMessage.anchor.setTo(0.5, 1);
+    message.anchor.setTo(0.5, 1);
   }
 
   //while the game is running
@@ -171,7 +172,11 @@ window.onload = function() {
     }
 
     if (won) {
-      winningMessage.text = 'Prepare for the next level!';
+      message.text = 'Prepare for the next level!';
+    }
+    if (lives === 0) {
+      lost = true;
+      message.text = 'You lost!';
     }
   }
 
