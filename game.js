@@ -126,9 +126,17 @@ function update() {
     player.animations.play('walk', 10, true)
     player.body.velocity.x = 300;
     player.scale.x = 1;
-
-
-  } else {
+  }
+  else if (cursors.up.isDown) {
+    player.animations.play('walk', 10, true)
+    player.body.velocity.y = - 200;
+    player.scale.y = 1;
+  } else if (cursors.down.isDown) {
+    player.animations.play('walk', 10, true)
+    player.body.velocity.y = 200;
+    player.scale.y = 1;
+  }
+  else {
     player.animations.stop();
   }
 
