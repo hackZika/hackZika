@@ -23,6 +23,9 @@ function addItems() {
   items = game.add.physicsGroup();
   createItem(375, 400, 'coin');
   createItem(100, 100, 'coin');
+  createItem(200, 100, 'coin');
+  createItem(400, 300, 'coin');
+  createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
   createItem(300, 120, 'fish');
@@ -89,7 +92,7 @@ function badgeHandler(player, badge) {
 
 // setup game when the web page loads
 window.onload = function() {
-  game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+  game = new Phaser.Game(900, 500, Phaser.AUTO, 'backgroundImage', {
     preload: preload,
     create: create,
     update: update,
@@ -98,20 +101,26 @@ window.onload = function() {
 
   // before the game begins
   function preload() {
-    game.stage.backgroundColor = '#5db1ad';
-
-    //load images
-
+    game.load.image('day', 'assets/middleDay.png');
     //load spritesheets
+    game.load.spritesheet('player', 'assets/mosquito.png', 35, 35);
     game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
     game.load.spritesheet('fish', 'assets/loveFish.png', 24, 37.5);
-    game.load.spritesheet('player', 'assets/mosquito.png', 35, 35);
   }
+
   //initial game set up
   function create() {
+    let backgroundImage = game.add.image(
+      game.world.centerX,
+      game.world.centerY,
+      'day'
+    );
+
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+    backgroundImage.anchor.set(0.5);
     player = game.add.sprite(50, 600, 'player');
     player.animations.add('walk');
     player.anchor.setTo(0.5, 1);
@@ -143,8 +152,6 @@ window.onload = function() {
     game.physics.arcade.overlap(player, items, itemHandler);
     game.physics.arcade.overlap(player, badges, badgeHandler);
     player.body.velocity.x = 0;
-
-    game.time.events.loop(Phaser.Time.SECOND * 3, fish, this);
 
     if (cursors.left.isDown) {
       player.animations.play('walk', 10, true);
