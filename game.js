@@ -36,6 +36,7 @@ function createItem(left, top, image) {
   item.animations.play('spin', 10, true);
 }
 
+<<<<<<< HEAD
 // create badge to go to next level
 
 function createBadge() {
@@ -64,10 +65,35 @@ function itemHandler(player, item) {
     break;
     case 'heart': lives += 1;
     break;
+=======
+// when the player collects an item on the screen
+function _itemsPlus(player, itemsPlus) {
+  itemsPlus.kill();
+  switch (itemsPlus) {
+    case 'honey':
+      currentScore += 10;
+      break;
+    case 'water':
+      currentScore += 20;
+      break;
+  }
+}
+
+function _itemsMinus(player, itemsMinus) {
+  itemsMinus.kill();
+  switch (itemsMinus) {
+    case 'poison':
+      lives -= 1;
+      break;
+    case 'mist':
+      lives -= 2;
+      break;
+>>>>>>> e728274c27592da8a6cb31901dd199ee6da79631
   }
 }
 
 // when the player collects the badge
+<<<<<<< HEAD
 function badgeHandler(player, badge) {
   badge.kill();
   won = true;
@@ -76,6 +102,22 @@ function badgeHandler(player, badge) {
 // setup game when the web page loads
 window.onload = function () {
   game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+=======
+// _badge() => {
+//   badge.kill();
+//   won = true;
+// }
+
+// setup game when the web page loads
+window.onload = function() {
+  game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+    preload: preload,
+    create: create,
+    update: update,
+    render: render
+  });
+};
+>>>>>>> e728274c27592da8a6cb31901dd199ee6da79631
 
 // before the game begins
 function preload() {
@@ -103,8 +145,8 @@ function create() {
 
   cursors = game.input.keyboard.createCursorKeys();
   jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  text = game.add.text(16, 16, "SCORE: " + currentScore, { font: "bold 24px Arial", fill: "white"});
-  winningMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "white"});
+  text = game.add.text(16, 16, 'SCORE: ' + currentScore, { font: 'bold 24px Arial', fill: 'white' });
+  winningMessage = game.add.text(game.world.centerX, 275, '', { font: 'bold 48px Arial', fill: 'white' });
   winningMessage.anchor.setTo(0.5, 1);
 }
 
@@ -150,9 +192,13 @@ function update() {
 
 }
 
+<<<<<<< HEAD
 
 function render() {
 
   }
+=======
+function render() {}
+>>>>>>> e728274c27592da8a6cb31901dd199ee6da79631
 
 };
