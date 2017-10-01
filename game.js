@@ -59,10 +59,10 @@ function _itemsMinus(player, itemsMinus) {
 }
 
 // when the player collects the badge
-function _badge() {
-  badge.kill();
-  won = true;
-}
+// _badge() => {
+//   badge.kill();
+//   won = true;
+// }
 
 // setup game when the web page loads
 window.onload = function () {
