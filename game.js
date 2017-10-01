@@ -11,6 +11,7 @@ let won = false;
 let currentScore = 0;
 let lives = 5;
 let level;
+let fish = 'assets/loveFish.png';
 
 // barrier randomizer
 // function randomItems() {
@@ -24,7 +25,7 @@ function addItems() {
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
-  createItem(125, 120, 'star');
+  createItem(300, 120, 'fish');
   createItem(425, 300, 'heart');
 }
 
@@ -107,6 +108,7 @@ window.onload = function() {
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
+    game.load.spritesheet('fish', 'assets/loveFish.png', 24, 37.5);
   }
   //initial game set up
   function create() {
@@ -135,6 +137,8 @@ window.onload = function() {
     game.physics.arcade.overlap(player, items, itemHandler);
     game.physics.arcade.overlap(player, badges, badgeHandler);
     player.body.velocity.x = 0;
+
+    game.time.events.loop(Phaser.Time.SECOND * 3, fish, this);
 
     if (cursors.left.isDown) {
       player.animations.play('walk', 10, true);
