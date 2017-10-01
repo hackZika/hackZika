@@ -108,7 +108,7 @@ window.onload = function() {
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
-    game.load.spritesheet('fish', 'assets/LoveFish.png', 39, 16);
+    game.load.spritesheet('fish', 'assets/LoveFish.png', 16, 14);
   }
   //initial game set up
   function create() {
@@ -176,14 +176,11 @@ window.onload = function() {
       player.body.velocity.y = -400;
     }
 
-    if (lives === 0) {
-      lost = true;
-    }
-
     if (won) {
       message.text = 'Prepare for the next level!';
     }
-    if (lost) {
+    if (lives === 0) {
+      lost = true;
       message.text = 'You lost!';
     }
   }
