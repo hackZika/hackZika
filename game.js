@@ -115,7 +115,7 @@ window.onload = function() {
     player.anchor.setTo(0.5, 1);
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
-    player.body.gravity.y = 200;
+    player.body.gravity.y = 500;
 
     addItems();
     // addPlatforms();
@@ -138,20 +138,25 @@ window.onload = function() {
 
     if (cursors.left.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.x = -300;
+      player.body.velocity.x = -350;
       player.scale.x = -1;
     } else if (cursors.right.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.x = 300;
+      player.body.velocity.x = 350;
       player.scale.x = 1;
     } else if (cursors.up.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.y = -200;
+      player.body.velocity.y = -350;
       player.scale.y = 1;
     } else if (cursors.down.isDown) {
       player.animations.play('walk', 10, true);
       player.body.velocity.y = 200;
       player.scale.y = 1;
+    } else if (cursors.up.isDown & cursors.left.isDown) {
+      player.animations.play('walk', 10, true);
+      player.body.velocity.x = -350;
+      player.body.velocity.y = -350;
+      player.scale.x = -1;
     } else {
       player.animations.stop();
     }
