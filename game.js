@@ -148,14 +148,14 @@ window.onload = function() {
     // Player Mechanics
     if (cursors.left.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.x = 350;
-      player.scale.x = -1;
+      player.body.velocity.x = -350;
+      player.scale.x = 1;
     }
 
     if (cursors.right.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.x = -350;
-      player.scale.x = 1;
+      player.body.velocity.x = 350;
+      player.scale.x = -1;
     }
 
     if (cursors.up.isDown) {
@@ -166,18 +166,15 @@ window.onload = function() {
 
     if (cursors.down.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.y = 400;
+      player.body.velocity.y = 300;
       player.scale.y = 1;
     }
 
-    if (!cursors.left.isDown && !cursors.right.isDown && !cursors.up.isDown) {
+    if (cursors.down.isDown) {
       player.animations.stop();
     }
 
-    if (
-      jumpButton.isDown &&
-      (player.body.onFloor() || player.body.touching.down)
-    ) {
+    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -400;
     }
 
