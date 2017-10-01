@@ -117,11 +117,11 @@ window.onload = function() {
     player.anchor.setTo(0.5, 1);
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
-    player.body.gravity.y = 700;
+    player.body.gravity.y = 650;
 
     addItems();
-    // addPlatforms();
 
+    // addPlatforms();
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     text = game.add.text(16, 16, 'SCORE: ' + currentScore, {
@@ -136,7 +136,6 @@ window.onload = function() {
   }
 
   //while the game is running
-
   function update() {
     text.text = 'SCORE: ' + currentScore + ' LIVES: ' + lives;
     game.physics.arcade.collide(player, platforms);
@@ -146,15 +145,16 @@ window.onload = function() {
 
     game.time.events.loop(Phaser.Time.SECOND * 3, fish, this);
 
+    // Player Mechanics
     if (cursors.left.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.x = -350;
+      player.body.velocity.x = 350;
       player.scale.x = -1;
     }
 
     if (cursors.right.isDown) {
       player.animations.play('walk', 10, true);
-      player.body.velocity.x = 350;
+      player.body.velocity.x = -350;
       player.scale.x = 1;
     }
 
