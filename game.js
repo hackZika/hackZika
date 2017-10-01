@@ -24,8 +24,8 @@ function addItems() {
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
-  createItem(650, 200, 'heart');
-
+  createItem(125, 120, 'star');
+  createItem(425, 300, 'heart');
 
 }
 
