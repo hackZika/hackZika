@@ -101,7 +101,7 @@ window.onload = function() {
 
   // before the game begins
   function preload() {
-    game.load.image('day', 'assets/middleDay.png');
+    game.load.image('night', 'assets/middleNight.png');
     //load spritesheets
     game.load.spritesheet('player', 'assets/mosquito.png', 35, 35);
     game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
@@ -116,7 +116,7 @@ window.onload = function() {
     let backgroundImage = game.add.image(
       game.world.centerX,
       game.world.centerY,
-      'day'
+      'night'
     );
 
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
