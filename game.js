@@ -6,8 +6,9 @@ let badges;
 let cursors;
 let jumpButton;
 let text;
-let winningMessage;
+let message;
 let won = false;
+let lost = false;
 let currentScore = 0;
 let lives = 5;
 let level;
@@ -24,7 +25,7 @@ function addItems() {
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
-  createItem(125, 120, 'star');
+  createItem(125, 120, 'fish');
   createItem(425, 300, 'heart');
 }
 
@@ -64,7 +65,7 @@ function itemHandler(player, item) {
       lives -= 3;
       break;
     case 'fish':
-      lives = lives - lives;
+      lives -= lives;
       break;
     case 'coin':
       currentScore += 25;
