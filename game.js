@@ -41,20 +41,24 @@ function createItem(left, top, image) {
 function _itemsPlus(player, itemsPlus) {
   itemsPlus.kill();
   switch (itemsPlus) {
-    case 'honey': currentScore += 10;
-    break;
-    case 'water': currentScore += 20;
-    break;
+    case 'honey':
+      currentScore += 10;
+      break;
+    case 'water':
+      currentScore += 20;
+      break;
   }
 }
 
 function _itemsMinus(player, itemsMinus) {
   itemsMinus.kill();
   switch (itemsMinus) {
-    case 'poison': lives -= 1;
-    break;
-    case 'mist': lives -= 2;
-    break;
+    case 'poison':
+      lives -= 1;
+      break;
+    case 'mist':
+      lives -= 2;
+      break;
   }
 }
 
@@ -65,9 +69,14 @@ function _itemsMinus(player, itemsMinus) {
 // }
 
 // setup game when the web page loads
-window.onload = function () {
-  game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
-}
+window.onload = function() {
+  game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+    preload: preload,
+    create: create,
+    update: update,
+    render: render
+  });
+};
 
 // before the game begins
 function preload() {
@@ -92,8 +101,8 @@ function create() {
 
   cursors = game.input.keyboard.createCursorsKeys();
   jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  text = game.add.text(16, 16, "SCORE: " + currentScore, { font: "bold 24px Arial", fill: "white"});
-  winningMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "white"});
+  text = game.add.text(16, 16, 'SCORE: ' + currentScore, { font: 'bold 24px Arial', fill: 'white' });
+  winningMessage = game.add.text(game.world.centerX, 275, '', { font: 'bold 48px Arial', fill: 'white' });
   winningMessage.anchor.setTo(0.5, 1);
 }
 
@@ -108,9 +117,7 @@ function update() {
   player.body.velocity.x = 0;
 }
 
-function render() {
-
-}
+function render() {}
 
 //left cursor
 // if (cursors.left.isDown)
