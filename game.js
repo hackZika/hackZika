@@ -21,15 +21,15 @@ let fish = 'assets/loveFish.png';
 // add collectable
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(375, 400, 'coin');
+  createItem(375, 400, 'poison');
   createItem(100, 100, 'coin');
-  createItem(200, 100, 'coin');
-  createItem(400, 300, 'coin');
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
-  createItem(575, 500, 'poison');
+  createItem(575, 300, 'coin');
+  createItem(575, 200, 'heart');
   createItem(300, 120, 'fish');
-  createItem(425, 300, 'heart');
+  createItem(100, 465, 'bush');
+  createItem(425, 465, 'bush');
 }
 
 // add platforms
@@ -81,6 +81,10 @@ function itemHandler(player, item) {
       break;
     case 'star':
       currentScore += 100;
+      break;
+    case 'bush':
+      currentScore += 5;
+      break;
   }
 }
 
@@ -103,6 +107,7 @@ window.onload = function() {
   function preload() {
     game.load.image('night', 'assets/middleNight.png');
     //load spritesheets
+    game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
     game.load.spritesheet('player', 'assets/mosquito.png', 35, 35);
     game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
     game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
@@ -134,11 +139,11 @@ window.onload = function() {
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     text = game.add.text(16, 16, 'SCORE: ' + currentScore, {
-      font: 'bold 24px Arial',
+      font: 'bold 20px "Press Start 2P"',
       fill: 'white'
     });
     message = game.add.text(game.world.centerX, 275, '', {
-      font: 'bold 48px Arial',
+      font: 'bold 48px "Press Start 2P"',
       fill: 'white'
     });
     message.anchor.setTo(0.5, 1);
@@ -192,6 +197,10 @@ window.onload = function() {
 
     if (won) {
       message.text = 'Prepare for the next level!';
+    }
+    if (lives <= 0) {
+      lost = true;
+      message.text = 'You LOST!';
     }
   }
 
