@@ -24,6 +24,9 @@ function addItems() {
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 500, 'poison');
+  createItem(650, 200, 'heart');
+
+
 }
 
 // add platforms
@@ -92,6 +95,7 @@ game.load.spritesheet('player', 'assets/digger.png', 30, 30);
 game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
 game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
 game.load.spritesheet('star', 'assets/star.png', 32, 32);
+game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
 
 }
 //initial game set up
