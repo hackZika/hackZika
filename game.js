@@ -200,7 +200,7 @@ window.onload = function() {
     }
     if (lives <= 0) {
       lost = true;
-      message.text = 'You LOST!';
+      message.text = 'You LOSE!';
     }
   }
 
