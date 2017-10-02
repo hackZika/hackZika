@@ -12,7 +12,8 @@ let currentScore = 0;
 let lives = 5;
 let level;
 let fish = 'assets/loveFish.png';
-
+let backgroundImage;
+let items;
 // barrier randomizer
 // function randomItems() {
 //   let items = Math.floor(Math.random() * 500) - 1;
@@ -96,7 +97,7 @@ function badgeHandler(player, badge) {
 
 // setup game when the web page loads
 window.onload = function() {
-  game = new Phaser.Game(900, 550, Phaser.AUTO, 'backgroundImage', {
+  game = new Phaser.Game(900, 550, Phaser.AUTO, 'zikaGame', {
     preload: preload,
     create: create,
     update: update,
@@ -118,12 +119,14 @@ window.onload = function() {
 
   //initial game set up
   function create() {
-    let backgroundImage = game.add.image(
+    backgroundImage = game.add.tileSprite(
       game.world.centerX,
       game.world.centerY,
+      900,
+      550,
       'night'
     );
-
+    //game.world.setBounds(0, 0, 2000, 550);
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     backgroundImage.anchor.set(0.5);
     player = game.add.sprite(50, 600, 'player');
@@ -132,6 +135,8 @@ window.onload = function() {
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.gravity.y = 650;
+      player.animations.play('walk', 10, true);
+      player.scale.x = -1;
 
     addItems();
 
@@ -202,6 +207,10 @@ window.onload = function() {
       lost = true;
       message.text = 'You LOST!';
     }
+
+    //Repeat the background per tiles
+      backgroundImage.tilePosition.x -= 1;
+items.
   }
 
   function render() {}
