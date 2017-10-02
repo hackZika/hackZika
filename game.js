@@ -210,7 +210,7 @@ window.onload = function() {
 
     //Repeat the background per tiles
       backgroundImage.tilePosition.x -= 1;
-items.
+      items.x -= 1;
   }
 
   function render() {}
