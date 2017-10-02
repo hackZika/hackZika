@@ -37,7 +37,8 @@ Game.prototype = {
     this.stage.disableVisibilityChange = false;
     game.add.sprite(0, 0, 'stars');
     this.addMenuOption('Next ->', function (e) {
-      this.game.state.start("GameOver");
+      window.location = "/game.html"
+      // this.game.state.start("GameOver");
     });
   }
 };

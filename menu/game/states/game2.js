@@ -96,7 +96,7 @@ function badgeHandler(player, badge) {
 }
 
 // setup game when the web page loads
- window.onload = function() {
+window.onload = function() {
   game = new Phaser.Game(900, 550, Phaser.AUTO, 'zikaGame', {
     preload: preload,
     create: create,

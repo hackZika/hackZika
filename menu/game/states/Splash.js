@@ -3,14 +3,14 @@ var Splash = function () {};
 Splash.prototype = {
 
   loadScripts: function () {
-    game.load.script('style', 'lib/style.js');
-    game.load.script('mixins', 'lib/mixins.js');
-    game.load.script('WebFont', 'vendor/webfontloader.js');
-    game.load.script('gamemenu','states/GameMenu.js');
-    game.load.script('game', 'states/Game.js');
-    game.load.script('gameover','states/GameOver.js');
-    game.load.script('credits', 'states/Credits.js');
-    game.load.script('options', 'states/Options.js');
+    game.load.script('style', 'menu/game/lib/style.js');
+    game.load.script('mixins', 'menu/game/lib/mixins.js');
+    game.load.script('WebFont', 'menu/game/vendor/webfontloader.js');
+    game.load.script('gamemenu','menu/game/states/GameMenu.js');
+    game.load.script('game', 'menu/game/states/Game.js');
+    game.load.script('gameover','menu/game/states/GameOver.js');
+    game.load.script('credits', 'menu/game/states/Credits.js');
+    game.load.script('options', 'menu/game/states/Options.js');
   },
 
   loadBgm: function () {
@@ -20,16 +20,16 @@ Splash.prototype = {
   },
   // varios freebies found from google image search
   loadImages: function () {
-    game.load.image('menu-bg', 'assets/images/menu-bg.jpg');
-    game.load.image('options-bg', 'assets/images/options-bg.jpg');
-    game.load.image('gameover-bg', 'assets/images/gameover-bg.jpg');
+    game.load.image('menu-bg', 'menu/game/assets/images/menu-bg.jpg');
+    game.load.image('options-bg', 'menu/game/assets/images/options-bg.jpg');
+    game.load.image('gameover-bg', 'menu/game/assets/images/gameover-bg.jpg');
   },
 
   loadFonts: function () {
     WebFontConfig = {
       custom: {
         families: ['TheMinion'],
-        urls: ['assets/style/theminion.css']
+        urls: ['menu/game/assets/style/theminion.css']
       }
     }
   },
