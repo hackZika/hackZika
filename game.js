@@ -22,7 +22,7 @@ let y;
 function addItems() {
   items = game.add.physicsGroup();
 
-  createItem(x, y, 'coin');
+  // createItem(x, y, 'coin');
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 300, 'coin');
@@ -105,7 +105,7 @@ window.onload = function() {
 
   // before the game begins
   function preload() {
-    game.load.image('night', 'assets/middleNight.png');
+    game.load.image('night', 'assets/middleDay.png');
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
     game.load.spritesheet('player', 'assets/mosquito.png', 40, 40);
@@ -210,8 +210,7 @@ window.onload = function() {
     //Repeat the background per tiles
     backgroundImage.tilePosition.x -= 1;
     items.x -= 1;
-    //randomItems();
-    setTimeout(randomItems(), 50);
+    setTimeout(randomItems(), 10);
   }
 
   //Collectables Randomizer
@@ -220,9 +219,8 @@ window.onload = function() {
     let randomnumber = Math.floor(Math.random() * 4) - 1;
     if (randomnumber == -1) randomnumber = 0;
     let y = Math.floor(Math.random() * 500 - 1);
-    x += 200;
+    x += 175;
     createItem(x, y, itemString[randomnumber]);
-    console.log(x);
   }
 
   function render() {}
