@@ -15,16 +15,15 @@ let fish = 'assets/loveFish.png';
 let backgroundImage;
 
 let items;
-// barrier randomizer
-// function randomItems() {
-//   let items = Math.floor(Math.random() * 500) - 1;
-// }
+let itemString = ['poison', 'coin', 'star', 'heart'];
+let x = 0;
+let y;
 
 // add collectable
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(375, 400, 'poison');
-  createItem(100, 100, 'coin');
+
+  // createItem(x, y, 'coin');
   createItem(100, 100, 'coin');
   createItem(225, 200, 'star');
   createItem(575, 300, 'coin');
@@ -104,7 +103,7 @@ function badgeHandler(player, badge) {
 }
 
 // setup game when the web page loads
- window.onload = function() {
+window.onload = function() {
   game = new Phaser.Game(900, 550, Phaser.AUTO, 'zikaGame', {
     preload: preload,
     create: create,
@@ -117,7 +116,7 @@ function badgeHandler(player, badge) {
     game.load.image('night', 'assets/middleNight.png');
     game.load.image('platform', 'assets/platform.png');
     game.load.image('platform2', 'assets/platform2.png');
-
+    
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
     game.load.spritesheet('player', 'assets/mosquito.png', 40, 40);
@@ -143,14 +142,14 @@ function badgeHandler(player, badge) {
     //game.world.setBounds(0, 0, 2000, 550);
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     backgroundImage.anchor.set(0.5);
-    player = game.add.sprite(50, 600, 'player');
+    player = game.add.sprite(50, 300, 'player');
     player.animations.add('walk');
     player.anchor.setTo(0.5, 1);
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.gravity.y = 650;
-      player.animations.play('walk', 10, true);
-      player.scale.x = -1;
+    player.animations.play('walk', 10, true);
+    player.scale.x = -1;
 
     addItems();
     addPlatforms()
@@ -224,8 +223,18 @@ function badgeHandler(player, badge) {
     }
 
     //Repeat the background per tiles
-      backgroundImage.tilePosition.x -= 1;
-      items.x -= 1;
+    backgroundImage.tilePosition.x -= 1;
+    items.x -= 1;
+    setTimeout(randomItems(), 10);
+  }
+
+  //Collectables Randomizer
+  function randomItems() {
+    let randomnumber = Math.floor(Math.random() * 4) - 1;
+    if (randomnumber == -1) randomnumber = 0;
+    let y = Math.floor(Math.random() * 500 - 1);
+    x += 175;
+    createItem(x, y, itemString[randomnumber]);
   }
 
   function render() {}
