@@ -14,19 +14,13 @@ let level;
 let fish = 'assets/loveFish.png';
 let backgroundImage;
 let items;
-let itemString = ['poison', 'coin', 'star', 'heart'];
+let itemString = ['coin', 'poison', 'star', 'heart'];
 let x = 0;
 let y;
 
 // add collectable
 function addItems() {
   items = game.add.physicsGroup();
-
-  // createItem(x, y, 'coin');
-  createItem(100, 100, 'coin');
-  createItem(225, 200, 'star');
-  createItem(575, 300, 'coin');
-  createItem(575, 200, 'heart');
   createItem(300, 120, 'fish');
   createItem(100, 510, 'bush');
   createItem(425, 510, 'bush');
@@ -222,6 +216,8 @@ window.onload = function() {
     x += 175;
     createItem(x, y, itemString[randomnumber]);
   }
+
+  //
 
   function render() {}
 };

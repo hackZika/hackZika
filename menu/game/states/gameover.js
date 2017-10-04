@@ -44,7 +44,7 @@ GameOver.prototype = {
   create: function() {
     game.add.sprite(0, 0, 'gameover-bg');
     var titleStyle = {
-      font: 'bold 60pt TheMinion',
+      font: 'bold 60pt "Press Start 2P"',
       fill: '#FDFFB5',
       align: 'center'
     };

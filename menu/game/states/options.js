@@ -1,17 +1,15 @@
 var Options = function(game) {};
 
 Options.prototype = {
-
   menuConfig: {
-    className: "inverse",
+    className: 'inverse',
     startY: 260,
-    startX: "center"
+    startX: 'center'
   },
 
-
-  init: function () {
-    this.titleText = game.make.text(game.world.centerX, 100, "Game Title", {
-      font: 'bold 60pt TheMinion',
+  init: function() {
+    this.titleText = game.make.text(game.world.centerX, 100, 'Game Title', {
+      font: 'bold 60pt "Press Start 2P"',
       fill: '#FDFFB5',
       align: 'center'
     });
@@ -19,23 +17,27 @@ Options.prototype = {
     this.titleText.anchor.set(0.5);
     this.optionCount = 1;
   },
-  create: function () {
+  create: function() {
     var playSound = gameOptions.playSound,
-        playMusic = gameOptions.playMusic;
+      playMusic = gameOptions.playMusic;
 
     game.add.sprite(0, 0, 'options-bg');
     game.add.existing(this.titleText);
-    this.addMenuOption(playMusic ? 'Mute Music' : 'Play Music', function (target) {
+    this.addMenuOption(playMusic ? 'Mute Music' : 'Play Music', function(
+      target
+    ) {
       playMusic = !playMusic;
       target.text = playMusic ? 'Mute Music' : 'Play Music';
       musicPlayer.volume = playMusic ? 1 : 0;
     });
-    this.addMenuOption(playSound ? 'Mute Sound' : 'Play Sound', function (target) {
+    this.addMenuOption(playSound ? 'Mute Sound' : 'Play Sound', function(
+      target
+    ) {
       playSound = !playSound;
       target.text = playSound ? 'Mute Sound' : 'Play Sound';
     });
-    this.addMenuOption('<- Back', function () {
-      game.state.start("GameMenu");
+    this.addMenuOption('<- Back', function() {
+      game.state.start('GameMenu');
     });
   }
 };
