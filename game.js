@@ -13,6 +13,7 @@ let lives = 5;
 let level;
 let fish = 'assets/loveFish.png';
 let backgroundImage;
+
 let items;
 let itemString = ['coin', 'poison', 'star', 'heart'];
 let x = 0;
@@ -29,6 +30,13 @@ function addItems() {
 // add platforms
 function addPlatforms() {
   platforms = game.add.physicsGroup();
+  platforms.create(250, 150, 'platform');
+  platforms.create(50, 300, 'platform');
+  platforms.create(550, 200, 'platform2');
+  platforms.create(300, 450, 'platform2');
+  platforms.create(400, 350, 'platform2');
+  platforms.create(100, 100, 'platform2');
+  platforms.setAll('body.immovable', true);
 }
 
 // create a single animated item
@@ -99,7 +107,10 @@ window.onload = function() {
 
   // before the game begins
   function preload() {
-    game.load.image('night', 'assets/middleDay.png');
+    game.load.image('night', 'assets/middleNight.png');
+    game.load.image('platform', 'assets/platform.png');
+    game.load.image('platform2', 'assets/platform2.png');
+    
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
     game.load.spritesheet('player', 'assets/mosquito.png', 40, 40);
@@ -109,6 +120,9 @@ window.onload = function() {
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
     game.load.spritesheet('fish', 'assets/loveFish.png', 24, 37.5);
   }
+
+  //Load images
+
 
   //initial game set up
   function create() {
@@ -132,6 +146,7 @@ window.onload = function() {
     player.scale.x = -1;
 
     addItems();
+    addPlatforms()
 
     // addPlatforms();
     cursors = game.input.keyboard.createCursorKeys();
