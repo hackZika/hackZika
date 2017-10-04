@@ -37,9 +37,7 @@ if (!Object.assign) {
 // Production steps of ECMA-262, Edition 5, 15.4.4.18
 // Reference: http://es5.github.io/#x15.4.4.18
 if (!Array.prototype.forEach) {
-
   Array.prototype.forEach = function(callback, thisArg) {
-
     var T, k;
 
     if (this == null) {
@@ -55,7 +53,7 @@ if (!Array.prototype.forEach) {
 
     // 4. If IsCallable(callback) is false, throw a TypeError exception.
     // See: http://es5.github.com/#x9.11
-    if (typeof callback !== "function") {
+    if (typeof callback !== 'function') {
       throw new TypeError(callback + ' is not a function');
     }
 
@@ -69,7 +67,6 @@ if (!Array.prototype.forEach) {
 
     // 7. Repeat, while k < len
     while (k < len) {
-
       var kValue;
 
       // a. Let Pk be ToString(k).
@@ -78,7 +75,6 @@ if (!Array.prototype.forEach) {
       //   This step can be combined with c
       // c. If kPresent is true, then
       if (k in O) {
-
         // i. Let kValue be the result of calling the Get internal method of O with argument Pk.
         kValue = O[k];
 
