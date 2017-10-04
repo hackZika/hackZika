@@ -214,7 +214,6 @@ window.onload = function() {
   }
 
   //Collectables Randomizer
-
   function randomItems() {
     let randomnumber = Math.floor(Math.random() * 4) - 1;
     if (randomnumber == -1) randomnumber = 0;
