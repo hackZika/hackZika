@@ -70,7 +70,7 @@ function itemHandler(player, item) {
       lives -= 3;
       break;
     case 'fish':
-      lives = lives - lives;
+      lives -= lives;
       break;
     case 'coin':
       currentScore += 25;
@@ -110,7 +110,7 @@ window.onload = function() {
     game.load.image('night', 'assets/middleNight.png');
     game.load.image('platform', 'assets/platform.png');
     game.load.image('platform2', 'assets/platform2.png');
-    
+
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
     game.load.spritesheet('player', 'assets/mosquito.png', 40, 40);
@@ -123,16 +123,9 @@ window.onload = function() {
 
   //Load images
 
-
   //initial game set up
   function create() {
-    backgroundImage = game.add.tileSprite(
-      game.world.centerX,
-      game.world.centerY,
-      900,
-      550,
-      'night'
-    );
+    backgroundImage = game.add.tileSprite(game.world.centerX, game.world.centerY, 900, 550, 'night');
     //game.world.setBounds(0, 0, 2000, 550);
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     backgroundImage.anchor.set(0.5);
@@ -146,7 +139,7 @@ window.onload = function() {
     player.scale.x = -1;
 
     addItems();
-    addPlatforms()
+    addPlatforms();
 
     // addPlatforms();
     cursors = game.input.keyboard.createCursorKeys();
@@ -201,10 +194,7 @@ window.onload = function() {
       player.animations.stop();
     }
 
-    if (
-      jumpButton.isDown &&
-      (player.body.onFloor() || player.body.touching.down)
-    ) {
+    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -400;
     }
 
