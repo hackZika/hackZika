@@ -1,11 +1,10 @@
 var style;
 
 // this is a wrapped function
-(function () {
-
+(function() {
   // the variables declared here will not be scoped anywhere and will only be accessible in this wrapped function
-  var defaultColor = "white",
-    highlightColor = "#FEFFD5";
+  var defaultColor = 'white',
+    highlightColor = '#FEFFD5';
 
   style = {
     navitem: {
@@ -30,11 +29,10 @@ var style;
   };
 
   for (var key in style.navitem) {
-    if (key !== "base") {
-      Object.assign(style.navitem[key], style.navitem.base)
+    if (key !== 'base') {
+      Object.assign(style.navitem[key], style.navitem.base);
     }
   }
-
 })();
 
 // the trailing () triggers the function call immediately

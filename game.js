@@ -67,7 +67,7 @@ function itemHandler(player, item) {
       lives -= 3;
       break;
     case 'fish':
-      lives = lives - lives;
+      lives -= lives;
       break;
     case 'coin':
       currentScore += 25;
@@ -122,13 +122,7 @@ window.onload = function() {
 
   //initial game set up
   function create() {
-    backgroundImage = game.add.tileSprite(
-      game.world.centerX,
-      game.world.centerY,
-      900,
-      550,
-      'night'
-    );
+    backgroundImage = game.add.tileSprite(game.world.centerX, game.world.centerY, 900, 550, 'night');
     //game.world.setBounds(0, 0, 2000, 550);
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     backgroundImage.anchor.set(0.5);
@@ -197,10 +191,7 @@ window.onload = function() {
       player.animations.stop();
     }
 
-    if (
-      jumpButton.isDown &&
-      (player.body.onFloor() || player.body.touching.down)
-    ) {
+    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -400;
     }
 
