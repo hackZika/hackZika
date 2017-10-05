@@ -33,9 +33,6 @@ function addPlatforms() {
   platforms.create(250, 150, 'platform');
   platforms.create(50, 300, 'platform');
   platforms.create(550, 200, 'platform2');
-  platforms.create(300, 450, 'platform2');
-  platforms.create(400, 350, 'platform2');
-  platforms.create(100, 100, 'platform2');
   platforms.setAll('body.immovable', true);
 }
 
@@ -110,7 +107,7 @@ window.onload = function() {
     game.load.image('night', 'assets/middleNight.png');
     game.load.image('platform', 'assets/platform.png');
     game.load.image('platform2', 'assets/platform2.png');
-    
+
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
     game.load.spritesheet('player', 'assets/mosquito.png', 40, 40);
@@ -122,7 +119,6 @@ window.onload = function() {
   }
 
   //Load images
-
 
   //initial game set up
   function create() {
@@ -146,7 +142,7 @@ window.onload = function() {
     player.scale.x = -1;
 
     addItems();
-    addPlatforms()
+    addPlatforms();
 
     // addPlatforms();
     cursors = game.input.keyboard.createCursorKeys();
@@ -170,7 +166,7 @@ window.onload = function() {
     game.physics.arcade.overlap(player, badges, badgeHandler);
     player.body.velocity.x = 0;
 
-    game.time.events.loop(Phaser.Time.SECOND * 3, fish, this);
+    game.time.events.loop(Phaser.Time.SECOND * 3, 'fish', this);
 
     // Player Mechanics
     if (cursors.left.isDown) {
@@ -219,6 +215,7 @@ window.onload = function() {
     //Repeat the background per tiles
     backgroundImage.tilePosition.x -= 1;
     items.x -= 1;
+    platforms.x -= 1;
     setTimeout(randomItems(), 10);
   }
 
