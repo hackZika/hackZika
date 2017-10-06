@@ -36,6 +36,7 @@ GameMenu.prototype = {
     });
     this.addMenuOption('Credits', function() {
       game.state.start('Credits');
+      console.log('Credits');
     });
   }
 };

@@ -29,8 +29,8 @@ Credits.prototype = {
     taskText.anchor.setTo(0.5);
     taskText.stroke = 'rgba(0,0,0,0)';
     taskText.strokeThickness = 4;
-    game.add.tween(authorText).to({ y: -300 }, 20000, Phaser.Easing.Cubic.Out, true, this.creditCount * 10000);
-    game.add.tween(taskText).to({ y: -200 }, 20000, Phaser.Easing.Cubic.Out, true, this.creditCount * 10000);
+    game.add.tween(authorText).to({ y: -300 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
+    game.add.tween(taskText).to({ y: -200 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
     this.creditCount++;
   },
 
@@ -67,11 +67,11 @@ Credits.prototype = {
 
   create: function() {
     this.stage.disableVisibilityChange = true;
-    if (gameOptions.playMusic) {
-      musicPlayer.stop();
-      musicPlayer = game.add.audio('exit');
-      musicPlayer.play();
-    }
+    // if (gameOptions.playMusic) {
+    //   musicPlayer.stop();
+    //   musicPlayer = game.add.audio('exit');
+    //   musicPlayer.play();
+    // }
     var bg = game.add.sprite(0, 0, 'gameover-bg');
     this.addCredit('Developer', 'William Whatley');
     this.addCredit('Developer', 'Justin Linn');
@@ -82,6 +82,6 @@ Credits.prototype = {
     this.addMenuOption('<- Back', function(e) {
       game.state.start('GameMenu');
     });
-    game.add.tween(bg).to({ alpha: 0 }, 20000, Phaser.Easing.Cubic.Out, true, 40000);
+    game.add.tween(bg).to({ alpha: 0 }, 10000, Phaser.Easing.Cubic.Out, true, 40000);
   }
 };
