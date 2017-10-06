@@ -14,7 +14,7 @@ let level;
 let fish = 'assets/loveFish.png';
 let backgroundImage;
 let items;
-let itemString = ['coin', 'poison', 'star', 'heart'];
+let itemString = ['coin', 'poison', 'star', 'heart', 'waterBlob'];
 let x = 0,
   xPos = 0;
 let y;
@@ -24,20 +24,18 @@ let water;
 // add collectable
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(300, 120, 'fish');
 }
 
-// water tiles
-// function addWater() {
-//   water = game.add.physicsGroup();
-// }
+function addFish() {
+  fish = game.add.physicsGroup();
+}
 
 // add platforms
 function addPlatforms() {
   platforms = game.add.physicsGroup();
-  platforms.create(250, 150, 'platform');
-  platforms.create(50, 300, 'platform');
-  platforms.create(550, 200, 'platform2');
+  platforms.create(250, 0, 'log1');
+  platforms.create(500, 0, 'log2');
+  platforms.create(400, 0, 'log3');
   platforms.setAll('body.immovable', true);
 }
 
@@ -89,6 +87,12 @@ function itemHandler(player, item) {
     case 'bush':
       currentScore += 5;
       break;
+    case 'waterBlob':
+      currentScore += 10;
+      break;
+    case 'gooBlob':
+      lives -= 1;
+      break;
   }
 }
 
@@ -111,8 +115,10 @@ window.onload = function() {
   function preload() {
     //Load images
     game.load.image('night', 'assets/middleNight.png');
-    game.load.image('platform', 'assets/platform.png');
     game.load.image('platform2', 'assets/platform2.png');
+    game.load.image('log1', 'assets/shortLog.png');
+    game.load.image('log2', 'assets/mediumLog.png');
+    game.load.image('log3', 'assets/longLog.png');
 
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
@@ -123,6 +129,8 @@ window.onload = function() {
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
     game.load.spritesheet('fish', 'assets/loveFish.png', 24, 37.5);
     game.load.spritesheet('water', 'assets/watertiles.png', 900, 76);
+    game.load.spritesheet('waterBlob', 'assets/waterBlog.png', 17.5, 14);
+    // game.load.spritesheet('gooBlob', 'assets/gooBlog.png', 17.5, 14);
   }
 
   //initial game set up
@@ -220,8 +228,9 @@ window.onload = function() {
     }
 
     if (player.y > 545) {
+      lives = 0;
       lost = true;
-      message.text = 'You lost';
+      message.text = 'You LOST!';
     }
 
     //Repeat the background per tiles
@@ -230,13 +239,14 @@ window.onload = function() {
     items.x -= 1;
     platforms.x -= 1;
 
-    setTimeout(randomItems(), 10);
+    setTimeout(randomItems(), 5);
   }
 
   //Collectables Randomizer
   function randomItems() {
-    let randomnumber = Math.floor(Math.random() * 4) - 1;
+    let randomnumber = Math.floor(Math.random() * 6) - 1;
     if (randomnumber == -1) randomnumber = 0;
+    // if (randomnumber == 6) randomnumber = 0;
     let y = Math.floor(Math.random() * 450 - 1);
     x += 175;
     createItem(x, y, itemString[randomnumber]);
