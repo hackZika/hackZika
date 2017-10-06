@@ -8,20 +8,25 @@ Credits.prototype = {
 
   addCredit: function(task, author) {
     var authorStyle = {
-      font: '40pt TheMinion',
+      font: '30pt "Press Start 2P"',
       fill: 'white',
       align: 'center',
       stroke: 'rgba(0,0,0,0)',
       strokeThickness: 4
     };
     var taskStyle = {
-      font: '30pt TheMinion',
+      font: '20pt "Press Start 2P"',
       fill: 'white',
       align: 'center',
       stroke: 'rgba(0,0,0,0)',
       strokeThickness: 4
     };
-    var authorText = game.add.text(game.world.centerX, 900, author, authorStyle);
+    var authorText = game.add.text(
+      game.world.centerX,
+      900,
+      author,
+      authorStyle
+    );
     var taskText = game.add.text(game.world.centerX, 950, task, taskStyle);
     authorText.anchor.setTo(0.5);
     authorText.stroke = 'rgba(0,0,0,0)';
@@ -29,14 +34,30 @@ Credits.prototype = {
     taskText.anchor.setTo(0.5);
     taskText.stroke = 'rgba(0,0,0,0)';
     taskText.strokeThickness = 4;
-    game.add.tween(authorText).to({ y: -300 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
-    game.add.tween(taskText).to({ y: -200 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
+    game.add
+      .tween(authorText)
+      .to(
+        { y: -300 },
+        10000,
+        Phaser.Easing.Cubic.Out,
+        true,
+        this.creditCount * 2600
+      );
+    game.add
+      .tween(taskText)
+      .to(
+        { y: -200 },
+        10000,
+        Phaser.Easing.Cubic.Out,
+        true,
+        this.creditCount * 2600
+      );
     this.creditCount++;
   },
 
   addMenuOption: function(text, callback) {
     var optionStyle = {
-      font: '30pt TheMinion',
+      font: '25pt "Press Start 2P"',
       fill: 'white',
       align: 'left',
       stroke: 'rgba(0,0,0,0)',
@@ -82,6 +103,8 @@ Credits.prototype = {
     this.addMenuOption('<- Back', function(e) {
       game.state.start('GameMenu');
     });
-    game.add.tween(bg).to({ alpha: 0 }, 10000, Phaser.Easing.Cubic.Out, true, 40000);
+    game.add
+      .tween(bg)
+      .to({ alpha: 0 }, 10000, Phaser.Easing.Cubic.Out, true, 40000);
   }
 };

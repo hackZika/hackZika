@@ -8,22 +8,25 @@ Game.prototype = {
   addMenuOption: function(text, callback) {
     var optionStyle = {
       font: '30pt TheMinion',
-      fill: 'white',
-      align: 'left',
-      stroke: 'rgba(0,0,0,0)',
-      srokeThickness: 4
+      fill: 'black',
+      align: 'right'
     };
-    var txt = game.add.text(game.world.centerX, this.optionCount * 80 + 200, text, optionStyle);
+    var txt = game.add.text(
+      game.world.centerX,
+      this.optionCount * 80 + 200,
+      text,
+      optionStyle
+    );
     txt.anchor.setTo(0.5);
-    txt.stroke = 'rgba(0,0,0,0';
+    txt.stroke = '#332A2B';
     txt.strokeThickness = 4;
     var onOver = function(target) {
-      target.fill = '#FEFFD5';
+      target.fill = '#332A2B';
       target.stroke = 'rgba(200,200,200,0.5)';
       txt.useHandCursor = true;
     };
     var onOut = function(target) {
-      target.fill = 'white';
+      target.fill = 'black';
       target.stroke = 'rgba(0,0,0,0)';
       txt.useHandCursor = false;
     };
@@ -41,7 +44,6 @@ Game.prototype = {
     game.add.sprite(0, 0, 'stars');
     this.addMenuOption('next', function(e) {
       window.location = '/game.html';
-      // this.game.state.start("GameOver");
     });
   }
 };
