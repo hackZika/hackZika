@@ -93,7 +93,7 @@ Credits.prototype = {
     //   musicPlayer = game.add.audio('exit');
     //   musicPlayer.play();
     // }
-    var bg = game.add.sprite(0, 0, 'gameover-bg');
+    var bg = game.add.sprite(50, 50, 'gameover-bg');
     this.addCredit('Developer', 'William Whatley');
     this.addCredit('Developer', 'Justin Linn');
     this.addCredit('Developer', 'Jose Campos');

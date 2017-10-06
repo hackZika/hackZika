@@ -8,7 +8,7 @@ GameMenu.prototype = {
 
   init: function() {
     this.titleText = game.make.text(game.world.centerX, 100, '', {
-      font: 'bold 60pt serif',
+      font: 'bold 60pt "Press Start 2P"',
       fill: '#FDFFB5',
       align: 'center'
     });

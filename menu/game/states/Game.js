@@ -7,7 +7,7 @@ Game.prototype = {
 
   addMenuOption: function(text, callback) {
     var optionStyle = {
-      font: '30pt TheMinion',
+      font: '30pt "Press Start 2P"',
       fill: 'black',
       align: 'right'
     };

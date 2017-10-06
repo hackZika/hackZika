@@ -24,6 +24,7 @@ let water;
 // add collectable
 function addItems() {
   items = game.add.physicsGroup();
+  createItem(200, 300, 'frog');
 }
 
 function addFish() {
@@ -130,7 +131,7 @@ window.onload = function() {
     game.load.spritesheet('fish', 'assets/loveFish.png', 24, 37.5);
     game.load.spritesheet('water', 'assets/watertiles.png', 900, 76);
     game.load.spritesheet('waterBlob', 'assets/waterBlog.png', 17.5, 14);
-    // game.load.spritesheet('gooBlob', 'assets/gooBlog.png', 17.5, 14);
+    game.load.spritesheet('frog', 'assets/frog.png', 40, 32);
   }
 
   //initial game set up
@@ -237,6 +238,7 @@ window.onload = function() {
     backgroundImage.tilePosition.x -= 1;
     backgroundWater.tilePosition.x -= 2;
     items.x -= 1;
+    fish.y -= 3;
     platforms.x -= 1;
 
     setTimeout(randomItems(), 5);
@@ -246,7 +248,7 @@ window.onload = function() {
   function randomItems() {
     let randomnumber = Math.floor(Math.random() * 6) - 1;
     if (randomnumber == -1) randomnumber = 0;
-    // if (randomnumber == 6) randomnumber = 0;
+    if (randomnumber == 6) randomnumber = 0;
     let y = Math.floor(Math.random() * 450 - 1);
     x += 175;
     createItem(x, y, itemString[randomnumber]);
