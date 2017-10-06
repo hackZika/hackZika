@@ -13,19 +13,24 @@ let lives = 5;
 let level;
 let fish = 'assets/loveFish.png';
 let backgroundImage;
-
 let items;
 let itemString = ['coin', 'poison', 'star', 'heart'];
-let x = 0;
+let x = 0,
+  xPos = 0;
 let y;
+let backgroundWater;
+let water;
 
 // add collectable
 function addItems() {
   items = game.add.physicsGroup();
   createItem(300, 120, 'fish');
-  createItem(100, 510, 'bush');
-  createItem(425, 510, 'bush');
 }
+
+// water tiles
+// function addWater() {
+//   water = game.add.physicsGroup();
+// }
 
 // add platforms
 function addPlatforms() {
@@ -104,6 +109,7 @@ window.onload = function() {
 
   // before the game begins
   function preload() {
+    //Load images
     game.load.image('night', 'assets/middleNight.png');
     game.load.image('platform', 'assets/platform.png');
     game.load.image('platform2', 'assets/platform2.png');
@@ -116,13 +122,21 @@ window.onload = function() {
     game.load.spritesheet('star', 'assets/star.png', 32, 32);
     game.load.spritesheet('heart', 'assets/hearts.png', 16, 14);
     game.load.spritesheet('fish', 'assets/loveFish.png', 24, 37.5);
+    game.load.spritesheet('water', 'assets/watertiles.png', 900, 76);
   }
-
-  //Load images
 
   //initial game set up
   function create() {
-    backgroundImage = game.add.tileSprite(game.world.centerX, game.world.centerY, 900, 550, 'night');
+    backgroundImage = game.add.tileSprite(
+      game.world.centerX,
+      game.world.centerY,
+      900,
+      550,
+      'night'
+    );
+
+    backgroundWater = game.add.tileSprite(0, 500, 900, 550, 'water');
+
     //game.world.setBounds(0, 0, 2000, 550);
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     backgroundImage.anchor.set(0.5);
@@ -138,7 +152,6 @@ window.onload = function() {
     addItems();
     addPlatforms();
 
-    // addPlatforms();
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     text = game.add.text(16, 16, 'SCORE: ' + currentScore, {
@@ -191,7 +204,10 @@ window.onload = function() {
       player.animations.stop();
     }
 
-    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down)) {
+    if (
+      jumpButton.isDown &&
+      (player.body.onFloor() || player.body.touching.down)
+    ) {
       player.body.velocity.y = -400;
     }
 
@@ -203,10 +219,18 @@ window.onload = function() {
       message.text = 'You LOST!';
     }
 
+    if (player.y > 545) {
+      lost = true;
+      message.text = 'You lost';
+    }
+    console.log(player.y);
+
     //Repeat the background per tiles
     backgroundImage.tilePosition.x -= 1;
+    backgroundWater.tilePosition.x -= 2;
     items.x -= 1;
     platforms.x -= 1;
+
     setTimeout(randomItems(), 10);
   }
 
@@ -214,12 +238,10 @@ window.onload = function() {
   function randomItems() {
     let randomnumber = Math.floor(Math.random() * 4) - 1;
     if (randomnumber == -1) randomnumber = 0;
-    let y = Math.floor(Math.random() * 500 - 1);
+    let y = Math.floor(Math.random() * 450 - 1);
     x += 175;
     createItem(x, y, itemString[randomnumber]);
   }
-
-  //
 
   function render() {}
 };
