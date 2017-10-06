@@ -9,7 +9,7 @@ var game = new Phaser.Game(900, 650, Phaser.AUTO, 'game'),
 
 Main.prototype = {
   preload: function() {
-    // game.load.image('stars', 'menu/game/assets/images/stars.jpg');
+    game.load.image('stars', 'menu/game/assets/images/stars.jpg');
     game.load.image('loading', 'menu/game/assets/images/loading.png');
     game.load.image('brand', 'menu/game/assets/images/logo.png');
     game.load.script('polyfill', 'menu/game/lib/polyfill.js');

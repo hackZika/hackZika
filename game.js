@@ -223,7 +223,6 @@ window.onload = function() {
       lost = true;
       message.text = 'You lost';
     }
-    console.log(player.y);
 
     //Repeat the background per tiles
     backgroundImage.tilePosition.x -= 1;
