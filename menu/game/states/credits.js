@@ -1,4 +1,4 @@
-var Credits = function(game) {};
+let Credits = function(game) {};
 
 Credits.prototype = {
   preload: function() {
@@ -7,72 +7,51 @@ Credits.prototype = {
   },
 
   addCredit: function(task, author) {
-    var authorStyle = {
+    let authorStyle = {
       font: '30pt "Press Start 2P"',
       fill: 'white',
       align: 'center',
       stroke: 'rgba(0,0,0,0)',
       strokeThickness: 4
     };
-    var taskStyle = {
+    let taskStyle = {
       font: '20pt "Press Start 2P"',
       fill: 'white',
       align: 'center',
       stroke: 'rgba(0,0,0,0)',
       strokeThickness: 4
     };
-    var authorText = game.add.text(
-      game.world.centerX,
-      900,
-      author,
-      authorStyle
-    );
-    var taskText = game.add.text(game.world.centerX, 950, task, taskStyle);
+    let authorText = game.add.text(game.world.centerX, 900, author, authorStyle);
+    let taskText = game.add.text(game.world.centerX, 950, task, taskStyle);
     authorText.anchor.setTo(0.5);
     authorText.stroke = 'rgba(0,0,0,0)';
     authorText.strokeThickness = 4;
     taskText.anchor.setTo(0.5);
     taskText.stroke = 'rgba(0,0,0,0)';
     taskText.strokeThickness = 4;
-    game.add
-      .tween(authorText)
-      .to(
-        { y: -300 },
-        10000,
-        Phaser.Easing.Cubic.Out,
-        true,
-        this.creditCount * 2600
-      );
-    game.add
-      .tween(taskText)
-      .to(
-        { y: -200 },
-        10000,
-        Phaser.Easing.Cubic.Out,
-        true,
-        this.creditCount * 2600
-      );
+    game.add.tween(authorText).to({ y: -300 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
+    game.add.tween(taskText).to({ y: -200 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
     this.creditCount++;
   },
 
   addMenuOption: function(text, callback) {
-    var optionStyle = {
+    let optionStyle = {
       font: '25pt "Press Start 2P"',
       fill: 'white',
       align: 'left',
       stroke: 'rgba(0,0,0,0)',
       strokeThickness: 4
     };
-    var txt = game.add.text(10, this.optionCount * 80 + 450, text, optionStyle);
+    let txt = game.add.text(10, this.optionCount * 80 + 450, text, optionStyle);
 
     txt.stroke = 'rgba(0,0,0,0';
     txt.strokeThickness = 4;
-    var onOver = function(target) {
+    let onOver = function(target) {
       target.fill = '#FEFFD5';
       target.stroke = 'rgba(200,200,200,0.5)';
       txt.useHandCursor = true;
     };
-    var onOut = function(target) {
+    let onOut = function(target) {
       target.fill = 'white';
       target.stroke = 'rgba(0,0,0,0)';
       txt.useHandCursor = false;
@@ -93,7 +72,7 @@ Credits.prototype = {
     //   musicPlayer = game.add.audio('exit');
     //   musicPlayer.play();
     // }
-    var bg = game.add.sprite(50, 50, 'gameover-bg');
+    let bg = game.add.sprite(50, 50, 'gameover-bg');
     this.addCredit('Developer', 'William Whatley');
     this.addCredit('Developer', 'Justin Linn');
     this.addCredit('Developer', 'Jose Campos');
@@ -103,8 +82,6 @@ Credits.prototype = {
     this.addMenuOption('<- Back', function(e) {
       game.state.start('GameMenu');
     });
-    game.add
-      .tween(bg)
-      .to({ alpha: 0 }, 10000, Phaser.Easing.Cubic.Out, true, 40000);
+    game.add.tween(bg).to({ alpha: 0 }, 10000, Phaser.Easing.Cubic.Out, true, 40000);
   }
 };

@@ -1,9 +1,9 @@
-var style;
+let style;
 
 // this is a wrapped function
 (function() {
-  // the variables declared here will not be scoped anywhere and will only be accessible in this wrapped function
-  var defaultColor = 'white',
+  // the letiables declared here will not be scoped anywhere and will only be accessible in this wrapped function
+  let defaultColor = 'white',
     highlightColor = '#FEFFD5';
 
   style = {
@@ -28,7 +28,7 @@ var style;
     }
   };
 
-  for (var key in style.navitem) {
+  for (let key in style.navitem) {
     if (key !== 'base') {
       Object.assign(style.navitem[key], style.navitem.base);
     }

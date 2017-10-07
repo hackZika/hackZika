@@ -1,4 +1,4 @@
-var Splash = function() {};
+let Splash = function() {};
 
 Splash.prototype = {
   loadScripts: function() {
@@ -17,7 +17,7 @@ Splash.prototype = {
     game.load.audio('dangerous', 'assets/bgm/Dangerous.mp3');
     game.load.audio('exit', 'assets/bgm/Exit the Premises.mp3');
   },
-  // varios freebies found from google image search
+  // letios freebies found from google image search
   loadImages: function() {
     game.load.image('menu-bg', 'menu/game/assets/images/menu-bg.jpg');
     game.load.image('options-bg', 'menu/game/assets/images/options-bg.jpg');
@@ -34,11 +34,7 @@ Splash.prototype = {
   },
 
   init: function() {
-    this.loadingBar = game.make.sprite(
-      game.world.centerX - 387 / 2,
-      400,
-      'loading'
-    );
+    this.loadingBar = game.make.sprite(game.world.centerX - 387 / 2, 400, 'loading');
     this.logo = game.make.sprite(game.world.centerX, 200, 'brand');
     this.status = game.make.text(game.world.centerX, 380, 'Loading...', {
       fill: 'white'
