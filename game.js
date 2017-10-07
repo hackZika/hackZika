@@ -15,7 +15,7 @@ let level;
 let fish = 'assets/loveFish.png';
 let backgroundImage;
 let items;
-let platformString = ['log1', 'log2', 'log3', 'log4', 'platform1', 'platform2'];
+let platformString = ['log1', 'log2', 'log3', 'log4', 'platform1'];
 let itemString = ['coin', 'poison', 'star', 'heart', 'waterBlob'];
 let x = 0;
 let xPlatform;
@@ -89,9 +89,6 @@ function itemHandler(player, item) {
       break;
     case 'waterBlob':
       currentScore += 10;
-      break;
-    case 'gooBlob':
-      lives -= 1;
       break;
   }
 }
@@ -249,23 +246,15 @@ window.onload = function() {
     items.x -= 1;
     platforms.x -= 1;
 
-    setTimeout(randomItems(), 5);
-    setTimeout(randomPlatforms(), 5);
-    // killObject();
-    // shutDown();
+    setTimeout(randomItems(), 50);
+    setTimeout(randomPlatforms(), 5000);
   }
 
-  // function killObject() {
-  //   console.log(platforms.x);
-  //   if (platforms.x == -1) {
-  //   }
-  // }
-
   function randomPlatforms() {
-    let randomPlatformNumber = Math.floor(Math.random() * 7) - 1;
+    let randomPlatformNumber = Math.floor(Math.random() * 6) - 1;
     if (randomPlatformNumber == -1) randomPlatformNumber = 0;
     let y = Math.floor(Math.random() * 450 - 1);
-    x += 125;
+    x += 350;
     platforms.create(x, y, platformString[randomPlatformNumber]);
     platforms.setAll('body.immovable', true);
   }
@@ -276,7 +265,7 @@ window.onload = function() {
     if (randomnumber == -1) randomnumber = 0;
     if (randomnumber == 6) randomnumber = 0;
     let y = Math.floor(Math.random() * 450 - 1);
-    x += 75;
+    x += 125;
     createItem(x, y, itemString[randomnumber]);
   }
 
