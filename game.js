@@ -236,10 +236,6 @@ window.onload = function() {
       message.text = 'You LOST!';
     }
 
-    if (lost) {
-      // gameOver();
-    }
-
     //Repeat the background per tiles
     backgroundImage.tilePosition.x -= 1;
     backgroundWater.tilePosition.x -= 2;
@@ -268,20 +264,6 @@ window.onload = function() {
     x += 125;
     createItem(x, y, itemString[randomnumber]);
   }
-
-  // function gameOver() {
-  //   this.state.start('Game_Over', true, false);
-  // }
-
-  // function shutDown() {
-  //   this.removeCachedAssets();
-  // }
-  //
-  // function removeCachedAssets() {
-  //   this.game.cache.removeImage('night');
-  //   this.game.cache.removeImage('platform2');
-  //   this.game.cache.removeImage('water');
-  // }
 
   function render() {}
 };
