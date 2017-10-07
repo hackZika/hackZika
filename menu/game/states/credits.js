@@ -21,7 +21,12 @@ Credits.prototype = {
       stroke: 'rgba(0,0,0,0)',
       strokeThickness: 4
     };
-    let authorText = game.add.text(game.world.centerX, 900, author, authorStyle);
+    let authorText = game.add.text(
+      game.world.centerX,
+      900,
+      author,
+      authorStyle
+    );
     let taskText = game.add.text(game.world.centerX, 950, task, taskStyle);
     authorText.anchor.setTo(0.5);
     authorText.stroke = 'rgba(0,0,0,0)';
@@ -29,8 +34,24 @@ Credits.prototype = {
     taskText.anchor.setTo(0.5);
     taskText.stroke = 'rgba(0,0,0,0)';
     taskText.strokeThickness = 4;
-    game.add.tween(authorText).to({ y: -300 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
-    game.add.tween(taskText).to({ y: -200 }, 10000, Phaser.Easing.Cubic.Out, true, this.creditCount * 2600);
+    game.add
+      .tween(authorText)
+      .to(
+        { y: -300 },
+        10000,
+        Phaser.Easing.Cubic.Out,
+        true,
+        this.creditCount * 2600
+      );
+    game.add
+      .tween(taskText)
+      .to(
+        { y: -200 },
+        10000,
+        Phaser.Easing.Cubic.Out,
+        true,
+        this.creditCount * 2600
+      );
     this.creditCount++;
   },
 
@@ -78,10 +99,14 @@ Credits.prototype = {
     this.addCredit('Developer', 'Jose Campos');
     this.addCredit('Developer', 'Raj Bushanam');
     this.addCredit('Phaser.io', 'Powered By');
+    this.addCredit('Designs By:');
+    this.addCredit('Game Developer Studio', 'Robert Brooks');
     this.addCredit('for playing', 'Thank you');
     this.addMenuOption('  <- Back', function(e) {
       game.state.start('GameMenu');
     });
-    game.add.tween(bg).to({ alpha: 0 }, 10000, Phaser.Easing.Cubic.Out, true, 40000);
+    game.add
+      .tween(bg)
+      .to({ alpha: 0 }, 10000, Phaser.Easing.Cubic.Out, true, 40000);
   }
 };

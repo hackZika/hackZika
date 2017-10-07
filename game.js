@@ -184,8 +184,6 @@ window.onload = function() {
     game.physics.arcade.overlap(player, badges, badgeHandler);
     player.body.velocity.x = 0;
 
-    game.time.events.loop(Phaser.Time.SECOND * 3, 'fish', this);
-
     // Player Mechanics
     if (cursors.left.isDown) {
       player.animations.play('walk', 10, true);
