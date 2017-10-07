@@ -1,4 +1,4 @@
-var style;
+let style;
 
 // this is a wrapped function
 (function() {
@@ -28,7 +28,7 @@ var style;
     }
   };
 
-  for (var key in style.navitem) {
+  for (let key in style.navitem) {
     if (key !== 'base') {
       Object.assign(style.navitem[key], style.navitem.base);
     }

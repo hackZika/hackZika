@@ -10,18 +10,18 @@ if (!Object.assign) {
         throw new TypeError('Cannot convert first argument to object');
       }
 
-      var to = Object(target);
-      for (var i = 1; i < arguments.length; i++) {
-        var nextSource = arguments[i];
+      let to = Object(target);
+      for (let i = 1; i < arguments.length; i++) {
+        let nextSource = arguments[i];
         if (nextSource === undefined || nextSource === null) {
           continue;
         }
         nextSource = Object(nextSource);
 
-        var keysArray = Object.keys(nextSource);
-        for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
-          var nextKey = keysArray[nextIndex];
-          var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+        let keysArray = Object.keys(nextSource);
+        for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+          let nextKey = keysArray[nextIndex];
+          let desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
           if (desc !== undefined && desc.enumerable) {
             to[nextKey] = nextSource[nextKey];
           }
@@ -38,18 +38,18 @@ if (!Object.assign) {
 // Reference: http://es5.github.io/#x15.4.4.18
 if (!Array.prototype.forEach) {
   Array.prototype.forEach = function(callback, thisArg) {
-    var T, k;
+    let T, k;
 
     if (this == null) {
       throw new TypeError(' this is null or not defined');
     }
 
     // 1. Let O be the result of calling ToObject passing the |this| value as the argument.
-    var O = Object(this);
+    let O = Object(this);
 
     // 2. Let lenValue be the result of calling the Get internal method of O with the argument "length".
     // 3. Let len be ToUint32(lenValue).
-    var len = O.length >>> 0;
+    let len = O.length >>> 0;
 
     // 4. If IsCallable(callback) is false, throw a TypeError exception.
     // See: http://es5.github.com/#x9.11
@@ -67,7 +67,7 @@ if (!Array.prototype.forEach) {
 
     // 7. Repeat, while k < len
     while (k < len) {
-      var kValue;
+      let kValue;
 
       // a. Let Pk be ToString(k).
       //   This is implicit for LHS operands of the in operator

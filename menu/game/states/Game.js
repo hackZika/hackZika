@@ -1,4 +1,4 @@
-var Game = function(game) {};
+let Game = function(game) {};
 
 Game.prototype = {
   preload: function() {
@@ -6,26 +6,21 @@ Game.prototype = {
   },
 
   addMenuOption: function(text, callback) {
-    var optionStyle = {
+    let optionStyle = {
       font: '30pt "Press Start 2P"',
       fill: 'black',
       align: 'right'
     };
-    var txt = game.add.text(
-      game.world.centerX,
-      this.optionCount * 80 + 200,
-      text,
-      optionStyle
-    );
-    txt.anchor.setTo(0.5);
+    let txt = game.add.text(game.world.centerX, this.optionCount * 445 + 200, text, optionStyle);
+    txt.anchor.setTo(0.7);
     txt.stroke = '#332A2B';
     txt.strokeThickness = 4;
-    var onOver = function(target) {
+    let onOver = function(target) {
       target.fill = '#332A2B';
       target.stroke = 'rgba(200,200,200,0.5)';
       txt.useHandCursor = true;
     };
-    var onOut = function(target) {
+    let onOut = function(target) {
       target.fill = 'black';
       target.stroke = 'rgba(0,0,0,0)';
       txt.useHandCursor = false;

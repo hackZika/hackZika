@@ -1,4 +1,4 @@
-var Options = function(game) {};
+let Options = function(game) {};
 
 Options.prototype = {
   menuConfig: {
@@ -18,7 +18,7 @@ Options.prototype = {
     this.optionCount = 1;
   },
   create: function() {
-    var playSound = gameOptions.playSound,
+    let playSound = gameOptions.playSound,
       playMusic = gameOptions.playMusic;
 
     game.add.sprite(50, 50, 'options-bg');
