@@ -157,7 +157,11 @@ window.onload = function() {
     player.body.gravity.y = 650;
     player.animations.play('walk', 10, true);
     player.scale.x = -1;
-
+    fish = game.add.sprite(300,200, 'fish', 2);
+    game.physics.enable(fish, Phaser.Physics.ARCADE);
+    fish.body.collideWorldBounds = true;
+    fish.body.bounce.setTo(1,1);
+    fish.body.velocity.y = -200;
     addItems();
     addPlatforms();
 
@@ -238,7 +242,7 @@ window.onload = function() {
     backgroundImage.tilePosition.x -= 1;
     backgroundWater.tilePosition.x -= 2;
     items.x -= 1;
-    fish.y -= 3;
+    //fish.y -= 3;
     platforms.x -= 1;
 
     setTimeout(randomItems(), 5);
