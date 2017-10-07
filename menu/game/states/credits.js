@@ -100,7 +100,7 @@ Credits.prototype = {
     this.addCredit('Developer', 'Raj Bushanam');
     this.addCredit('Phaser.io', 'Powered By');
     this.addCredit('for playing', 'Thank you');
-    this.addMenuOption('<- Back', function(e) {
+    this.addMenuOption('  <- Back', function(e) {
       game.state.start('GameMenu');
     });
     game.add

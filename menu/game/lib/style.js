@@ -3,13 +3,13 @@ var style;
 // this is a wrapped function
 (function() {
   // the variables declared here will not be scoped anywhere and will only be accessible in this wrapped function
-  var defaultColor = 'white',
+  var defaultColor = '#f6f6f6',
     highlightColor = '#FEFFD5';
 
   style = {
     navitem: {
       base: {
-        font: '30pt TheMinion',
+        font: '22pt "Press Start 2P"',
         align: 'left',
         srokeThickness: 4
       },

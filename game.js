@@ -7,6 +7,7 @@ let cursors;
 let jumpButton;
 let text;
 let message;
+let lost = false;
 let won = false;
 let currentScore = 0;
 let lives = 5;
@@ -14,9 +15,11 @@ let level;
 let fish = 'assets/loveFish.png';
 let backgroundImage;
 let items;
+let platformString = ['log1', 'log2', 'log3', 'log4', 'platform1', 'platform2'];
 let itemString = ['coin', 'poison', 'star', 'heart', 'waterBlob'];
-let x = 0,
-  xPos = 0;
+let x = 0;
+let xPlatform;
+let yPlatform;
 let y;
 let backgroundWater;
 let water;
@@ -24,7 +27,6 @@ let water;
 // add collectable
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(200, 300, 'frog');
 }
 
 function addFish() {
@@ -34,10 +36,7 @@ function addFish() {
 // add platforms
 function addPlatforms() {
   platforms = game.add.physicsGroup();
-  platforms.create(250, 0, 'log1');
-  platforms.create(500, 0, 'log2');
-  platforms.create(400, 0, 'log3');
-  platforms.setAll('body.immovable', true);
+  platforms.create(0, 320, 'platform2');
 }
 
 // create a single animated item
@@ -116,10 +115,12 @@ window.onload = function() {
   function preload() {
     //Load images
     game.load.image('night', 'assets/middleNight.png');
+    game.load.image('platform1', 'assets/shortLogLong.png');
     game.load.image('platform2', 'assets/platform2.png');
     game.load.image('log1', 'assets/shortLog.png');
     game.load.image('log2', 'assets/mediumLog.png');
     game.load.image('log3', 'assets/longLog.png');
+    game.load.image('log4', 'assets/mediumLogLong.png');
 
     //load spritesheets
     game.load.spritesheet('bush', 'assets/smallBush.png', 75, 40);
@@ -157,10 +158,10 @@ window.onload = function() {
     player.body.gravity.y = 650;
     player.animations.play('walk', 10, true);
     player.scale.x = -1;
-    fish = game.add.sprite(300,200, 'fish', 2);
+    fish = game.add.sprite(300, 200, 'fish', 2);
     game.physics.enable(fish, Phaser.Physics.ARCADE);
     fish.body.collideWorldBounds = true;
-    fish.body.bounce.setTo(1,1);
+    fish.body.bounce.setTo(1, 1);
     fish.body.velocity.y = -200;
     addItems();
     addPlatforms();
@@ -238,14 +239,35 @@ window.onload = function() {
       message.text = 'You LOST!';
     }
 
+    if (lost) {
+      // gameOver();
+    }
+
     //Repeat the background per tiles
     backgroundImage.tilePosition.x -= 1;
     backgroundWater.tilePosition.x -= 2;
     items.x -= 1;
-    //fish.y -= 3;
     platforms.x -= 1;
 
     setTimeout(randomItems(), 5);
+    setTimeout(randomPlatforms(), 5);
+    // killObject();
+    // shutDown();
+  }
+
+  // function killObject() {
+  //   console.log(platforms.x);
+  //   if (platforms.x == -1) {
+  //   }
+  // }
+
+  function randomPlatforms() {
+    let randomPlatformNumber = Math.floor(Math.random() * 7) - 1;
+    if (randomPlatformNumber == -1) randomPlatformNumber = 0;
+    let y = Math.floor(Math.random() * 450 - 1);
+    x += 125;
+    platforms.create(x, y, platformString[randomPlatformNumber]);
+    platforms.setAll('body.immovable', true);
   }
 
   //Collectables Randomizer
@@ -254,9 +276,23 @@ window.onload = function() {
     if (randomnumber == -1) randomnumber = 0;
     if (randomnumber == 6) randomnumber = 0;
     let y = Math.floor(Math.random() * 450 - 1);
-    x += 175;
+    x += 75;
     createItem(x, y, itemString[randomnumber]);
   }
+
+  // function gameOver() {
+  //   this.state.start('Game_Over', true, false);
+  // }
+
+  // function shutDown() {
+  //   this.removeCachedAssets();
+  // }
+  //
+  // function removeCachedAssets() {
+  //   this.game.cache.removeImage('night');
+  //   this.game.cache.removeImage('platform2');
+  //   this.game.cache.removeImage('water');
+  // }
 
   function render() {}
 };
