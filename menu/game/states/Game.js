@@ -11,8 +11,8 @@ Game.prototype = {
       fill: 'black',
       align: 'right'
     };
-    let txt = game.add.text(game.world.centerX, this.optionCount * 80 + 200, text, optionStyle);
-    txt.anchor.setTo(0.5);
+    let txt = game.add.text(game.world.centerX, this.optionCount * 445 + 200, text, optionStyle);
+    txt.anchor.setTo(0.7);
     txt.stroke = '#332A2B';
     txt.strokeThickness = 4;
     let onOver = function(target) {
