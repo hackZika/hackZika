@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "deploy": "surge ./public --domain hack-zika.camposja.surge.sh",
+    "start": "browser-sync start --server --files '*'",
+    "gh": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "browser-sync": "^2.18.13"
+  }
+}
